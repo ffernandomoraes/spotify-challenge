@@ -1,6 +1,5 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
-
 import { Button } from 'antd';
+import { Component, ErrorInfo, ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -34,8 +33,8 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div className='flex min-h-screen flex-col items-center justify-center gap-8'>
           <div className='flex flex-col items-center justify-center gap-2'>
-            <h2 className='text-4xl font-bold'>Ops! Algo deu errado</h2>
-            <p className='text-lg text-gray-500'>Ocorreu um erro inesperado na aplicação. Tente recarregar a página.</p>
+            <h2 className='text-4xl font-bold'>Ops, algo deu errado.</h2>
+            <p className='text-lg text-gray-500'>Ocorreu um erro inesperado na aplicação, lamentamos o transtorno.</p>
           </div>
 
           <Button key='reload' onClick={this.handleReload}>

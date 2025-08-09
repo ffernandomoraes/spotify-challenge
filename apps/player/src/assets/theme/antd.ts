@@ -6,10 +6,10 @@ const antdTheme: ThemeConfig = {
 
   token: {
     fontFamily: 'var(--font-sans)',
-    borderRadius: 8,
+    borderRadius: 24,
     colorPrimary: 'var(--color-brand)',
-    colorBorder: colors.gray[200],
-    controlHeight: 42,
+    colorBorder: 'var(--color-elevated-base)',
+    controlHeight: 44,
     fontSize: 16
   },
 
@@ -24,7 +24,11 @@ const antdTheme: ThemeConfig = {
       primaryShadow: 'none',
       paddingInline: 20,
       paddingInlineSM: 16,
-      defaultBg: 'transparent'
+      defaultBg: 'var(--color-elevated-base)',
+      defaultHoverBg: 'var(--color-elevated-highlight)',
+      defaultHoverBorderColor: 'var(--color-elevated-highlight)',
+      colorBgContainerDisabled: 'var(--color-elevated-base)',
+      colorPrimaryHover: colors.white
     },
 
     Tag: {
@@ -42,10 +46,12 @@ const antdTheme: ThemeConfig = {
 
     Input: {
       activeShadow: 'none',
-      colorBorder: colors.gray[200],
-      colorBgContainer: colors.white,
-      colorTextPlaceholder: colors.gray[400],
-      paddingInline: 16
+      paddingInline: 16,
+      colorBgContainer: 'var(--color-elevated-base)',
+      hoverBg: 'var(--color-elevated-highlight)',
+      activeBg: 'var(--color-elevated-highlight)',
+      hoverBorderColor: 'var(--color-elevated-highlight)',
+      activeBorderColor: 'var(--color-elevated-highlight)'
     },
 
     DatePicker: {
@@ -94,9 +100,11 @@ const antdTheme: ThemeConfig = {
     },
 
     Tooltip: {
-      lineHeight: 1.3,
+      lineHeight: 1.25,
       paddingXS: 12,
-      controlHeight: 10
+      controlHeight: 10,
+      colorBgSpotlight: 'var(--color-elevated-base)',
+      fontSize: 14
     }
   }
 };

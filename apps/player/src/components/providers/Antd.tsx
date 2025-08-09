@@ -1,15 +1,13 @@
-import { PropsWithChildren } from 'react';
-
 import { StyleProvider } from '@ant-design/cssinjs';
 import { App, ConfigProvider } from 'antd';
 import ptBR from 'antd/locale/pt_BR';
-
 import dayjs from 'dayjs';
 import ptBr from 'dayjs/locale/pt-br';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
+import { PropsWithChildren } from 'react';
 
-import antdTheme from '@/theme/antd';
+import antdTheme from '@/assets/theme/antd';
 
 dayjs.locale(ptBr);
 dayjs.extend(utc);

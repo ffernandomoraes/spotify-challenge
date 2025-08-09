@@ -10,6 +10,10 @@ const PrivateRoute = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   }, [setIsLoading]);
 
   if (!isAuthenticated) {
