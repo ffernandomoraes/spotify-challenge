@@ -1,6 +1,4 @@
-import { Spin } from 'antd';
-import { AiOutlineLoading } from 'react-icons/ai';
-
+import logo from '@/assets/images/logo.png';
 import { useStoreLoader } from '@/store/loader';
 
 const Loader = () => {
@@ -11,8 +9,8 @@ const Loader = () => {
   }
 
   return (
-    <div className='flex items-center justify-center w-screen h-screen fixed top-0 left-0 z-50'>
-      <Spin size='large' indicator={<AiOutlineLoading className='animate-spin' />} />
+    <div className='flex items-center justify-center w-dvw h-dvh fixed top-0 left-0 z-50'>
+      <img src={logo} alt='Logo Spotify' className='w-42 animate-pulse' />
     </div>
   );
 };
