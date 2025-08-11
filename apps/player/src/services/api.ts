@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { API_ENDPOINT } from '@/envs';
 import ErrorResponse from '@/interfaces/errors';
+import { useStoreSession } from '@/store/session';
 
 class ApiServiceClass {
   private axiosInstance = axios.create({
@@ -39,6 +40,7 @@ class ApiServiceClass {
         headers: {
           ...this.axiosInstance.defaults.headers.common,
           ...options.headers,
+          'Authorization': `Bearer ${useStoreSession.getState().token}`,
           'Content-Type': options.data instanceof FormData ? 'multipart/form-data' : 'application/json'
         }
       });
@@ -59,12 +61,12 @@ class ApiServiceClass {
     throw new Error(err.message || 'An unexpected error occurred');
   }
 
-  private setupInterceptors(): void {
+  private setupInterceptors() {
     this.axiosInstance.interceptors.response.use(
       response => response,
-      error => {
+      async error => {
         if (error.response?.status === 401) {
-          console.error('Unauthorized...');
+          // refresh token
         }
 
         return Promise.reject(error);

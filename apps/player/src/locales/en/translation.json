@@ -16,5 +16,17 @@
       "settings": "Settings",
       "logout": "Logout"
     }
+  },
+
+  "artists": {
+    "common": {
+      "artist": "Artist"
+    },
+
+    "topWorld": {
+      "title": "Top world - Hot",
+      "description": "Discover today's hottest artists from around the world.",
+      "seeAll": "See all"
+    }
   }
 }

@@ -1,22 +1,32 @@
+import { useQuery } from '@tanstack/react-query';
 import { PropsWithChildren, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
+import AuthService from '@/services/auth';
 import { useStoreLoader } from '@/store/loader';
 
 const PrivateRoute = ({ children }: PropsWithChildren) => {
   const { setIsLoading } = useStoreLoader();
 
-  const isAuthenticated = true;
+  const isAuthenticated = AuthService.getToken();
+
+  const { data, isLoading } = useQuery({
+    enabled: !isAuthenticated,
+    queryKey: ['auth-token'],
+    queryFn: AuthService.authenticate
+  });
 
   useEffect(() => {
-    setIsLoading(true);
-
-    setTimeout(() => {
+    if (!isLoading) {
       setIsLoading(false);
-    }, 3000);
-  }, [setIsLoading]);
+    }
 
-  if (!isAuthenticated) {
+    if (data) {
+      AuthService.setToken(data.access_token);
+    }
+  }, [data, isLoading, setIsLoading]);
+
+  if (!isAuthenticated && !isLoading) {
     return <Navigate to='/artists' />;
   }
 

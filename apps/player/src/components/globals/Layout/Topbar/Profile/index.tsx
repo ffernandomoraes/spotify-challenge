@@ -1,11 +1,20 @@
 import { Avatar, Button, Dropdown } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+
+import AuthService from '@/services/auth';
 
 const Profile = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
 
   const handleChangeLanguage = (language: string) => {
     i18n.changeLanguage(language);
+  };
+
+  const handleLogout = () => {
+    AuthService.clearToken();
+    navigate('/welcome');
   };
 
   return (
@@ -24,7 +33,7 @@ const Profile = () => {
             label: t('topbar.profile.settings')
           },
           {
-            key: 'divider',
+            key: 'divider-1',
             type: 'divider'
           },
           {
@@ -43,16 +52,23 @@ const Profile = () => {
                 label: 'Inglês (US)',
                 onClick: () => handleChangeLanguage('en'),
                 className: i18n.language === 'en' ? 'bg-brand/5' : ''
+              },
+              {
+                key: 'fr',
+                label: 'Français (FR)',
+                onClick: () => handleChangeLanguage('fr'),
+                className: i18n.language === 'fr' ? 'bg-brand/5' : ''
               }
             ]
           },
           {
-            key: 'divider',
+            key: 'divider-2',
             type: 'divider'
           },
           {
             key: 'logout',
-            label: t('topbar.profile.logout')
+            label: t('topbar.profile.logout'),
+            onClick: handleLogout
           }
         ]
       }}

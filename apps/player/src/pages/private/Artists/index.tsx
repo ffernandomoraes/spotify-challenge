@@ -1,5 +1,11 @@
+import TopWorld from './TopWorld';
+
 const Artists = () => {
-  return <h1>Artists</h1>;
+  return (
+    <div className='p-12 py-6 '>
+      <TopWorld />
+    </div>
+  );
 };
 
 export default Artists;

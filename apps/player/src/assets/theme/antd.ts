@@ -9,7 +9,7 @@ const antdTheme: ThemeConfig = {
     borderRadius: 24,
     colorPrimary: 'var(--color-brand)',
     colorBorder: 'var(--color-elevated-base)',
-    controlHeight: 44,
+    controlHeight: 50,
     fontSize: 16
   },
 
@@ -32,8 +32,10 @@ const antdTheme: ThemeConfig = {
     },
 
     Tag: {
-      fontSizeSM: 15,
-      colorBorder: colors.gray[200]
+      fontSizeSM: 14,
+      colorBorder: 'var(--color-elevated-base)',
+      defaultBg: 'var(--color-elevated-base)',
+      defaultColor: colors.gray[400]
     },
 
     Form: {

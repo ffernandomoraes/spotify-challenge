@@ -30,7 +30,7 @@ const HomeAndSearch = () => {
   const isHome = location.pathname === '/artists';
 
   return (
-    <div className='flex items-center gap-1'>
+    <div className='flex items-center gap-2'>
       <Tooltip title={t('topbar.buttonHome')}>
         <Button disabled={isHome} shape='circle' className='group' onClick={handleGoHome}>
           <HouseIcon className='w-5 h-5 fill-white/50 group-enabled:group-hover:fill-white transition-colors' />
@@ -40,7 +40,7 @@ const HomeAndSearch = () => {
       <Form form={form} layout='inline' onFinish={onSubmit}>
         <Form.Item name='search'>
           <Input
-            className='group w-108'
+            className='group w-124'
             placeholder={t('topbar.search.placeholder')}
             suffix={
               <SearchIcon className='w-5 h-5 fill-white/50 group-hover:fill-white group-focus-within:fill-white transition-colors' />

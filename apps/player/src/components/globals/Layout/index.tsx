@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
 import Content from './Content';
+import Controls from './Controls';
 import Topbar from './Topbar';
 
 const Layout = () => {
@@ -11,6 +12,8 @@ const Layout = () => {
       <Content>
         <Outlet />
       </Content>
+
+      <Controls />
     </div>
   );
 };

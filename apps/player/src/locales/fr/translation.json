@@ -1,0 +1,32 @@
+{
+  "form": {
+    "requiredField": "Le champ est requis"
+  },
+
+  "topbar": {
+    "buttonHome": "Aller à l'accueil",
+
+    "search": {
+      "placeholder": "Ce que vous voulez écouter ?"
+    },
+
+    "profile": {
+      "language": "Langue",
+      "title": "Profil",
+      "settings": "Paramètres",
+      "logout": "Déconnexion"
+    }
+  },
+
+  "artists": {
+    "common": {
+      "artist": "Artiste"
+    },
+
+    "topWorld": {
+      "title": "Top world - Chauds",
+      "description": "Découvrez les artistes les plus chauds du monde.",
+      "seeAll": "Voir tous"
+    }
+  }
+}
