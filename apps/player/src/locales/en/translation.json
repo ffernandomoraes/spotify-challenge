@@ -1,0 +1,20 @@
+{
+  "form": {
+    "requiredField": "The field is required"
+  },
+
+  "topbar": {
+    "buttonHome": "Go to home",
+
+    "search": {
+      "placeholder": "What do you want to listen?"
+    },
+
+    "profile": {
+      "language": "Language",
+      "title": "Profile",
+      "settings": "Settings",
+      "logout": "Logout"
+    }
+  }
+}

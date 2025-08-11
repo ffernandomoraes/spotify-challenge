@@ -1,0 +1,20 @@
+{
+  "form": {
+    "requiredField": "O campo é obrigatório"
+  },
+
+  "topbar": {
+    "buttonHome": "Voltar para início",
+
+    "search": {
+      "placeholder": "O que você quer ouvir?"
+    },
+
+    "profile": {
+      "language": "Idioma",
+      "title": "Perfil",
+      "settings": "Configurações",
+      "logout": "Sair"
+    }
+  }
+}

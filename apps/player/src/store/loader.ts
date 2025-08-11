@@ -6,6 +6,6 @@ type StoreLoaderProps = {
 };
 
 export const useStoreLoader = create<StoreLoaderProps>(set => ({
-  isLoading: false,
+  isLoading: true,
   setIsLoading: isLoading => set({ isLoading })
 }));
