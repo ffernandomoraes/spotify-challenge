@@ -21,6 +21,14 @@
   p, h1, h2, h3, h4, h5, h6, code, pre, blockquote, ul, ol, li {
     margin: 0;
   }
+
+  ::selection {
+    @apply bg-brand/30 text-white;
+  }
+
+  .transition-default {
+    @apply transition-all duration-400;
+  }
 }
 
 body {

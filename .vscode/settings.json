@@ -12,5 +12,14 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.idea": true,
+    "**/node_modules": true
+  }
 }

@@ -12,7 +12,7 @@ const Controls = () => {
   return (
     <footer className='bg-black backdrop-blur-sm fixed bottom-0 left-0 right-0 w-full h-22 flex flex-row items-center border-t border-white/10 px-12'>
       <div className='flex items-center justify-between w-full'>
-        <div className='flex flex-row items-center gap-3'>
+        <div className='flex-row items-center gap-3 hidden md:flex'>
           <img
             src='https://i.scdn.co/image/ab67616d000048513eb9bb75e0b5472777ba0291'
             alt='Album Cover'
@@ -46,7 +46,7 @@ const Controls = () => {
           <ProgressBar progress={50} prefix={'1:57'} suffix={'3:02'} />
         </div>
 
-        <div className='w-40 flex flex-row gap-3 items-center justify-end h-full'>
+        <div className='w-40 flex-row gap-3 items-center justify-end h-full hidden md:flex'>
           <SoundIcon className='w-5 h-5 fill-white/50 cursor-pointer hover:fill-white transition-colors duration-300' />
           <ProgressBar progress={50} />
         </div>

@@ -1,8 +1,6 @@
-import { PropsWithChildren } from 'react';
-
-import { App } from 'antd';
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { App } from 'antd';
+import { PropsWithChildren } from 'react';
 
 const TanstackQueryProvider = ({ children }: PropsWithChildren) => {
   const { message } = App.useApp();
@@ -11,7 +9,9 @@ const TanstackQueryProvider = ({ children }: PropsWithChildren) => {
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
-        retry: false
+        retry: false,
+        gcTime: 0,
+        staleTime: 0
       },
 
       mutations: {

@@ -1,5 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
+import AuthService from './auth';
+
 import { API_ENDPOINT } from '@/envs';
 import ErrorResponse from '@/interfaces/errors';
 import { useStoreSession } from '@/store/session';
@@ -66,7 +68,13 @@ class ApiServiceClass {
       response => response,
       async error => {
         if (error.response?.status === 401) {
-          // refresh token
+          const { access_token } = await AuthService.authenticate();
+
+          AuthService.clearToken();
+          AuthService.setToken(access_token);
+
+          const response = await this.request(error.config);
+          return { data: response };
         }
 
         return Promise.reject(error);

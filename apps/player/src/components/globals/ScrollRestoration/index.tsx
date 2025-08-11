@@ -9,7 +9,6 @@ const ScrollRestoration = () => {
       const main = document.querySelector('[role="main"]');
 
       if (!main) {
-        console.warn('[ScrollRestoration] Main element not found.');
         return;
       }
 

@@ -18,7 +18,7 @@ class AuthServiceClass {
   }
 
   async authenticate() {
-    const response = await ApiService.post<{ access_token: string }>('http://localhost:3001/auth');
+    const response = await ApiService.post<{ access_token: string }>('/auth');
     return response;
   }
 }

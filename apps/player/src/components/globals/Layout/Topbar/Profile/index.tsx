@@ -10,6 +10,7 @@ const Profile = () => {
 
   const handleChangeLanguage = (language: string) => {
     i18n.changeLanguage(language);
+    localStorage.setItem('i18nextLng', language);
   };
 
   const handleLogout = () => {

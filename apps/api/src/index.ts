@@ -2,6 +2,8 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import { Buffer } from 'node:buffer';
+import { API_URL, IDS_TOP_WORLD_ARTISTS } from './data';
+import { sleep } from './sleep';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,7 +25,7 @@ app.post('/auth', async (req, res) => {
 
   const buffer = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
-  const response = await fetch('https://accounts.spotify.com/api/token', {
+  const response = await fetch(`https://accounts.spotify.com/api/token`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -34,11 +36,77 @@ app.post('/auth', async (req, res) => {
     })
   });
 
+  await sleep(3000);
+
+  const data = await response.json();
+  res.status(response.status).json(data);
+});
+
+app.get('/artists', async (req, res) => {
+  const response = await fetch(`${API_URL}/artists?ids=${IDS_TOP_WORLD_ARTISTS.join(',')}`, {
+    method: 'GET',
+    headers: {
+      Authorization: req.headers.authorization ?? ''
+    },
+  });
+
+  await sleep(3000);
+
   const data = await response.json();
 
-  setTimeout(() => {
-    res.json(data);
-  }, 3000);
+  res.status(response.status).json(data);
+});
+
+app.get('/artists/:id', async (req, res) => {
+  const response = await fetch(`${API_URL}/artists/${req.params.id}`, {
+    method: 'GET',
+    headers: {
+      Authorization: req.headers.authorization ?? ''
+    }
+  });
+
+  // await sleep(3000);
+
+  const data = await response.json();
+
+  res.status(response.status).json(data);
+});
+
+app.get('/artists/:id/top-tracks', async (req, res) => {
+  const response = await fetch(`${API_URL}/artists/${req.params.id}/top-tracks?market=BR`, {
+    method: 'GET',
+    headers: {
+      Authorization: req.headers.authorization ?? ''
+    }
+  });
+
+  const data = await response.json();
+
+  res.status(response.status).json(data);
+});
+
+app.get('/artists/:id/albums', async (req, res) => {
+  const offset = (req.query.offset ?? '0') as string;
+
+  const params = new URLSearchParams({
+    market: 'BR',
+    include_groups: 'album',
+    limit: '8',
+    offset
+  });
+
+  const response = await fetch(`${API_URL}/artists/${req.params.id}/albums?${params.toString()}`, {
+    method: 'GET',
+    headers: {
+      Authorization: req.headers.authorization ?? ''
+    }
+  });
+
+  const data = await response.json();
+
+  await sleep(3000);
+
+  res.status(response.status).json(data);
 });
 
 app.listen(PORT, () => {

@@ -4,7 +4,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from '@/components/globals/Layout';
 import PrivateRoute from '@/components/globals/PrivateRoute';
 
-const Artists = lazy(() => import('./private/Artists'));
+const ArtistsList = lazy(() => import('./private/Artists/List'));
+const ArtistsDetail = lazy(() => import('./private/Artists/Details'));
 const Search = lazy(() => import('./private/Search'));
 const Welcome = lazy(() => import('./public/Welcome'));
 
@@ -22,7 +23,9 @@ const AppRoutes = () => {
         >
           <Route index element={<Navigate to='/artists' replace />} />
 
-          <Route path='/artists' element={<Artists />} />
+          <Route path='/artists' element={<ArtistsList />} />
+          <Route path='/artist/:id' element={<ArtistsDetail />} />
+
           <Route path='/search' element={<Search />} />
         </Route>
 

@@ -37,17 +37,25 @@ const HomeAndSearch = () => {
         </Button>
       </Tooltip>
 
-      <Form form={form} layout='inline' onFinish={onSubmit}>
-        <Form.Item name='search'>
-          <Input
-            className='group w-124'
-            placeholder={t('topbar.search.placeholder')}
-            suffix={
-              <SearchIcon className='w-5 h-5 fill-white/50 group-hover:fill-white group-focus-within:fill-white transition-colors' />
-            }
-          />
-        </Form.Item>
-      </Form>
+      <div className='hidden md:block'>
+        <Form form={form} layout='inline' onFinish={onSubmit}>
+          <Form.Item name='search'>
+            <Input
+              className='group w-124 hidden md:flex'
+              placeholder={t('topbar.search.placeholder')}
+              suffix={
+                <SearchIcon className='w-5 h-5 fill-white/50 group-hover:fill-white group-focus-within:fill-white transition-colors' />
+              }
+            />
+          </Form.Item>
+        </Form>
+      </div>
+
+      <div className='block md:hidden'>
+        <Button shape='circle' className='group'>
+          <SearchIcon className='w-5 h-5 fill-white/50 group-enabled:group-hover:fill-white transition-colors' />
+        </Button>
+      </div>
     </div>
   );
 };

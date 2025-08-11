@@ -18,7 +18,7 @@ const resources: Record<LocaleKey, LocaleValue> = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: LOCALES.pt_BR,
+  lng: localStorage.getItem('i18nextLng') || LOCALES.pt_BR,
   fallbackLng: LOCALES.en,
   interpolation: { escapeValue: false },
   debug: isDevelopment
