@@ -1,4 +1,5 @@
 import { Tooltip } from 'antd';
+import { memo } from 'react';
 
 import { formatDurationToMinutes } from '@/formatters/duration';
 import type { Track as TrackType } from '@/interfaces/track';
@@ -9,7 +10,7 @@ type TrackProps = {
   index: number;
 };
 
-const Track = ({ data, index }: TrackProps) => {
+const Track = memo(({ data, index }: TrackProps) => {
   const setTrack = useControlsStore(state => state.setTrack);
 
   const handlePlay = () => {
@@ -55,6 +56,6 @@ const Track = ({ data, index }: TrackProps) => {
       </div>
     </div>
   );
-};
+});
 
 export default Track;

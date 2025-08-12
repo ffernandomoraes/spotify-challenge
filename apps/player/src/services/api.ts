@@ -9,33 +9,31 @@ import { useStoreSession } from '@/store/session';
 class ApiServiceClass {
   private axiosInstance = axios.create({
     baseURL: API_ENDPOINT,
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    timeout: 10000
+    timeout: 10000,
+    headers: { 'Content-Type': 'application/json' }
   });
 
   constructor() {
     this.setupInterceptors();
   }
 
-  public get<T = any>(url: string, params?: Record<string, any>): Promise<T> {
+  public get<T = unknown>(url: string, params?: Record<string, unknown>): Promise<T> {
     return this.request<T>({ method: 'GET', url, params });
   }
 
-  public post<T = any>(url: string, data?: any): Promise<T> {
+  public post<T = unknown>(url: string, data?: unknown): Promise<T> {
     return this.request<T>({ method: 'POST', url, data });
   }
 
-  public put<T = any>(url: string, data?: any): Promise<T> {
+  public put<T = unknown>(url: string, data?: unknown): Promise<T> {
     return this.request<T>({ method: 'PUT', url, data });
   }
 
-  public delete<T = any>(url: string, params?: Record<string, any>): Promise<T> {
+  public delete<T = unknown>(url: string, params?: Record<string, unknown>): Promise<T> {
     return this.request<T>({ method: 'DELETE', url, params });
   }
 
-  private async request<T = any>(options: AxiosRequestConfig): Promise<T> {
+  private async request<T = unknown>(options: AxiosRequestConfig): Promise<T> {
     try {
       const response: AxiosResponse<T> = await this.axiosInstance.request({
         ...options,
@@ -74,6 +72,7 @@ class ApiServiceClass {
           AuthService.setToken(access_token);
 
           const response = await this.request(error.config);
+
           return { data: response };
         }
 

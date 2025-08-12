@@ -38,7 +38,7 @@ const ListArtists = () => {
     <ListArtistsProvider value={{ backgroundEffectColor, setBackgroundEffectColor, resetBackgroundEffectColor }}>
       <div className='p-6 md:p-12 md:pt-8'>
         <div
-          style={{ ['--tw-backgroundEffectColor' as any]: backgroundEffectColor }}
+          style={{ ['--tw-backgroundEffectColor' as string]: backgroundEffectColor }}
           className={twMerge(
             'bg-linear-to-b to-background from-10% to-60% p-8 md:p-12 rounded-4xl space-y-6 transition-colors duration-500',
             !backgroundEffectColor && 'from-brand/50',

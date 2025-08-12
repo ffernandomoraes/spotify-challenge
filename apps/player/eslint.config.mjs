@@ -42,6 +42,7 @@ export default tseslint.config(
       ...pluginQuery.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
 
+      'react/display-name': 'off',
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'unused-imports/no-unused-imports': 'error',
       'object-shorthand': ['error', 'always', { avoidQuotes: true }],

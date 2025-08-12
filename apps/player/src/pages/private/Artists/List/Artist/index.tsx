@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import ArtistCard from '@/components/shared/ArtistCard';
 import type { Artist as ArtistType } from '@/interfaces/artists';
 import { getDominantColor } from '@/utils/getDominantColor';
 
-const Artist = ({ data }: { data: ArtistType }) => {
+const Artist = memo(({ data }: { data: ArtistType }) => {
   const { t } = useTranslation();
   const { setBackgroundEffectColor, resetBackgroundEffectColor } = useListArtists();
 
@@ -36,6 +36,6 @@ const Artist = ({ data }: { data: ArtistType }) => {
       </ArtistCard>
     </Link>
   );
-};
+});
 
 export default Artist;

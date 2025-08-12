@@ -1,10 +1,12 @@
+import { memo } from 'react';
+
 type ProgressBarProps = {
   progress: number;
   prefix?: string;
   suffix?: string;
 };
 
-const ProgressBar = ({ progress, prefix, suffix }: ProgressBarProps) => {
+const ProgressBar = memo(({ progress, prefix, suffix }: ProgressBarProps) => {
   return (
     <div className='flex items-center gap-3 w-full max-w-100'>
       {prefix && <span className='text-white/70 text-sm leading-none'>{prefix}</span>}
@@ -14,6 +16,6 @@ const ProgressBar = ({ progress, prefix, suffix }: ProgressBarProps) => {
       {suffix && <span className='text-white/70 text-sm leading-none'>{suffix}</span>}
     </div>
   );
-};
+});
 
 export default ProgressBar;
