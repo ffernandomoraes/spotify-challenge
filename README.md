@@ -1,32 +1,78 @@
-# `Turborepo` Vite starter
+# Spotify Challenge
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+Um player de música inspirado no Spotify, desenvolvido com React e TypeScript em uma arquitetura de monorepo.
 
-## Using this example
+## Estrutura do Projeto
 
-Run the following command:
+O projeto é organizado em um monorepo com dois apps principais:
 
-```sh
-npx create-turbo@latest -e with-vite-react
+- **`apps/player`** - Interface web do player de música
+- **`apps/api`** - API REST que simula endpoints do Spotify
+- **`packages/`** - Configurações compartilhadas (ESLint, TypeScript, Theme)
+
+## Tecnologias Utilizadas
+
+### Player (Frontend)
+- **React 19** + **TypeScript**
+- **Vite** - Build tool e dev server
+- **React Router Dom** - Roteamento
+- **Ant Design** - Biblioteca de componentes UI
+- **TailwindCSS** - Estilização
+- **Zustand** - Gerenciamento de estado
+- **TanStack Query** - Cache e sincronização de dados
+- **i18next** - Internacionalização (PT-BR, EN, FR)
+- **Axios** - Cliente HTTP
+
+### API (Backend)
+- **Node.js** + **Express**
+- **TypeScript**
+- **CORS** + **Helmet** - Segurança
+- **TSX** - Execução TypeScript em desenvolvimento
+
+### DevOps
+- **Turborepo** - Monorepo build system
+- **PNPM** - Gerenciador de pacotes
+- **ESLint** + **Prettier** - Padrões de qualidade do código
+
+## Arquitetura do Player
+
+O app player segue uma arquitetura em camadas bem definidas:
+
+```
+src/
+├── components/
+│ ├── providers/ # Providers globais (i18n, query, theme)
+│ ├── globals/ # Componentes globais (Layout, Routes)
+│ └── shared/ # Componentes reutilizáveis
+├── pages/
+│ ├── private/ # Páginas autenticadas (Artists, Search)
+│ └── public/ # Páginas públicas (Welcome)
+├── services/ # Integração com APIs
+├── store/ # Estados globais (Zustand)
+├── hooks/ # Custom hooks
+├── interfaces/ # Tipagens TypeScript
+└── utils/ # Funções utilitárias
 ```
 
-## What's inside?
+## Principais Funcionalidades
+- **Roteamento Protegido** - Rotas públicas e privadas
+- **Gerenciamento de Estado** - Controles do player, sessão, loader
+- **Internacionalização** - Suporte a múltiplos idiomas
+- **Lazy Loading** - Carregamento sob demanda de componentes
+- **Error Boundary** - Tratamento global de erros
 
-This Turborepo includes the following packages and apps:
+## Como Rodar o Projeto
 
-### Apps and Packages
+#### Pré-requisitos
+- Node.js 22+
+- PNPM 8+
 
-- `web`: react [vite](https://vitejs.dev) ts app
-- `@repo/ui`: a stub component library shared by `web` application
-- `@repo/eslint-config`: shared `eslint` configurations
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+#### Instalação
+```bash
+pnpm install
 
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+pnpm dev
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+pnpm --filter @spotify/player dev       # Player na porta 5173
+pnpm --filter @kanastra/bff-player dev  # API na porta 3001
+```
