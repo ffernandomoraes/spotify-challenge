@@ -63,7 +63,7 @@ const Search = () => {
           {!isLoadingOrFetching &&
             data?.albums.items.map(album => (
               <AlbumCard key={album.id}>
-                <AlbumCard.Image path={album.images[0].url} alt={album.name} />
+                <AlbumCard.Image src={album.images[0].url} alt={album.name} />
 
                 <AlbumCard.Content>
                   <AlbumCard.Title>{album.name}</AlbumCard.Title>

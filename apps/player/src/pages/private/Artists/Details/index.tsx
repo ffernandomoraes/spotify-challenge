@@ -11,7 +11,7 @@ import Tracks from './Tracks';
 
 import ErrorResponse from '@/components/shared/ErrorResponse';
 import ArtistsService from '@/services/artists';
-import { getDominantColor } from '@/utils/getDominantColor';
+import { getColorCache, getDominantColor } from '@/utils/getDominantColor';
 
 const Details = () => {
   const { id } = useParams<{ id: string }>();
@@ -28,8 +28,15 @@ const Details = () => {
   });
 
   useEffect(() => {
-    getDominantColor(data?.images[1]?.url ?? '').then(setBackgroundEffectColor);
-  }, [data]);
+    const color = getColorCache(id ?? '');
+
+    if (color) {
+      setBackgroundEffectColor(color);
+      return;
+    }
+
+    getDominantColor(id ?? '', data?.images[1]?.url ?? '').then(setBackgroundEffectColor);
+  }, [data, id]);
 
   if (error) {
     return <ErrorResponse title={t('artists.error.title')} description={t('artists.error.description')} />;
@@ -42,7 +49,7 @@ const Details = () => {
           style={{ ['--tw-detailsBackgroundEffectColor' as string]: backgroundEffectColor }}
           className={twMerge(
             'bg-linear-to-b to-background from-10% to-[650px] p-6 md:p-12 rounded-4xl space-y-16 transition-colors duration-500',
-            !backgroundEffectColor && 'from-brand/50',
+            !backgroundEffectColor && 'from-background-base',
             backgroundEffectColor && 'from-[var(--tw-detailsBackgroundEffectColor)]'
           )}
         >

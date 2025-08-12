@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Layout from '@/components/globals/Layout';
+import LazyFallback from '@/components/globals/LazyFallback';
 import PrivateRoute from '@/components/globals/PrivateRoute';
 
 const ArtistsList = lazy(() => import('./private/Artists/List'));
@@ -11,7 +12,7 @@ const Welcome = lazy(() => import('./public/Welcome'));
 
 const AppRoutes = () => {
   return (
-    <Suspense>
+    <Suspense fallback={<LazyFallback />}>
       <Routes>
         <Route
           path='/'

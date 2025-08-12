@@ -1,4 +1,7 @@
-import { PropsWithChildren } from 'react';
+import { ImgHTMLAttributes, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
+
+import LazyImage from '../LazyImage';
 
 const AlbumCard = ({ children }: PropsWithChildren) => {
   return (
@@ -10,8 +13,8 @@ const AlbumCard = ({ children }: PropsWithChildren) => {
   );
 };
 
-const Image = ({ path, alt }: { path: string; alt: string }) => {
-  return <img src={path} alt={alt} className='w-20 h-20 rounded-lg object-cover' />;
+const Image = ({ className, ...props }: ImgHTMLAttributes<HTMLImageElement>) => {
+  return <LazyImage className={twMerge('w-20 h-20 rounded-lg object-cover', className)} {...props} />;
 };
 
 const Content = ({ children }: PropsWithChildren) => {

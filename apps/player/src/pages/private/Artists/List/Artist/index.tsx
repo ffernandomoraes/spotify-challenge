@@ -21,7 +21,7 @@ const Artist = memo(({ data }: { data: ArtistType }) => {
   };
 
   useEffect(() => {
-    getDominantColor(data?.images[1]?.url ?? '').then(setColor);
+    getDominantColor(data.id, data?.images[1]?.url ?? data?.images[0]?.url ?? '').then(setColor);
   }, [data]);
 
   return (

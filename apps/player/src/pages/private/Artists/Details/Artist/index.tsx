@@ -6,6 +6,7 @@ import { useArtistDetails } from '../context';
 
 import ArtistLoader from './Loader';
 
+import LazyImage from '@/components/shared/LazyImage';
 import { formatNumber } from '@/formatters/number';
 import { getContrastColor } from '@/utils/colorContrast';
 
@@ -23,10 +24,10 @@ const Artist = () => {
     <>
       <header className='w-full flex flex-col md:flex-row items-center gap-4 justify-between animate-fade-in'>
         <div className='w-full flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12'>
-          <img
+          <LazyImage
+            className='w-full h-full md:w-64 md:h-64 rounded-3xl object-cover'
             src={artist?.images[0]?.url ?? ''}
             alt={artist?.name}
-            className='w-full h-full md:w-64 md:h-64 rounded-3xl object-cover'
           />
 
           <div className='space-y-4'>

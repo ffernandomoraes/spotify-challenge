@@ -1,6 +1,8 @@
 import { HTMLAttributes, ImgHTMLAttributes, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
 
+import LazyImage from '../LazyImage';
+
 const ArtistCard = ({ children, ...props }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) => {
   return (
     <div className='flex flex-col group animate-fade-in' {...props}>
@@ -11,7 +13,7 @@ const ArtistCard = ({ children, ...props }: PropsWithChildren<HTMLAttributes<HTM
 
 const Image = ({ className, ...props }: ImgHTMLAttributes<HTMLImageElement>) => {
   return (
-    <img
+    <LazyImage
       {...props}
       className={twMerge(
         'w-full aspect-square opacity-100 md:opacity-90 group-hover:opacity-100 object-cover rounded-xl md:rounded-4xl outline-offset-5 outline-2 outline-transparent group-hover:outline-brand/70 transition-default',
