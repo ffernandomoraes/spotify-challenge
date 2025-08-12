@@ -6,7 +6,7 @@ type AlbumProps = {
 
 const Album = ({ data }: AlbumProps) => {
   return (
-    <div className='bg-elevated-base rounded-xl px-2.5 py-2.5 cursor-pointer transition-default w-full animate-fade-in'>
+    <div className='bg-elevated-base hover:bg-elevated-highlight rounded-xl px-2.5 py-2.5 cursor-pointer transition-default w-full animate-fade-in'>
       <div className='flex items-center justify-between gap-4'>
         <div className='flex items-center gap-4 overflow-hidden'>
           <img src={data.images[0].url} alt={data.name} className='w-20 h-20 rounded-lg object-cover' />

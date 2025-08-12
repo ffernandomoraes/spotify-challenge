@@ -72,6 +72,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      fast-average-color:
+        specifier: ^9.5.0
+        version: 9.5.0
       i18next:
         specifier: ^25.3.4
         version: 25.3.4(typescript@5.9.2)
@@ -2745,6 +2748,11 @@ packages:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /fast-average-color@9.5.0:
+    resolution: {integrity: sha512-nC6x2YIlJ9xxgkMFMd1BNoM1ctMjNoRKfRliPmiEWW3S6rLTHiQcy9g3pt/xiKv/D0NAAkhb9VyV+WJFvTqMGg==}
+    engines: {node: '>= 12'}
     dev: false
 
   /fast-deep-equal@3.1.3:

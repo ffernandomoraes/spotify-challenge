@@ -1,14 +1,35 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
+import { useTopWorld } from '../context';
+
 import type { Artist as ArtistType } from '@/interfaces/artists';
+import { getDominantColor } from '@/utils/getDominantColor';
 
 const Artist = ({ data }: { data: ArtistType }) => {
   const { t } = useTranslation();
+  const { setBackgroundEffectColor, resetBackgroundEffectColor } = useTopWorld();
+
+  const [color, setColor] = useState<string>('');
+
+  const handleMouseEnter = () => {
+    if (color) {
+      setBackgroundEffectColor(color);
+    }
+  };
+
+  useEffect(() => {
+    getDominantColor(data?.images[1]?.url ?? '').then(setColor);
+  }, [data]);
 
   return (
     <Link to={`/artist/${data.id}`}>
-      <div className='flex flex-col group animate-fade-in'>
+      <div
+        className='flex flex-col group animate-fade-in'
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={resetBackgroundEffectColor}
+      >
         <img
           src={data?.images[1]?.url ?? ''}
           alt={data.name}

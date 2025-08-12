@@ -116,6 +116,28 @@ app.get('/artists/:id/albums', async (req, res) => {
   res.status(response.status).json(data);
 });
 
+app.get('/search', async (req, res) => {
+  const query = req.query.q as string;
+
+  const params = new URLSearchParams({
+    q: query,
+    type: 'artist,album',
+    market: 'BR',
+    limit: '10'
+  });
+
+  const response = await fetch(`${API_URL}/search?${params.toString()}`, {
+    method: 'GET',
+    headers: {
+      Authorization: req.headers.authorization ?? ''
+    }
+  });
+
+  const data = await response.json();
+
+  res.status(response.status).json(data);
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
