@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 
 import Artist from './Artist';
-import Loader from './Artist/Loader';
 import TopWorldProvider from './context';
 
+import ArtistCardLoader from '@/components/shared/ArtistCard/Loader';
 import ArtistsService from '@/services/artists';
 import { getContrastColor } from '@/utils/colorContrast';
 
@@ -68,7 +68,7 @@ const TopWorld = () => {
         </header>
 
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 md:gap-6'>
-          {isLoading && new Array(12).fill(0).map((_, index) => <Loader key={index} />)}
+          {isLoading && new Array(12).fill(0).map((_, index) => <ArtistCardLoader key={index} />)}
           {!isLoading && data?.artists.map(artist => <Artist key={artist.id} data={artist} />)}
         </div>
       </div>

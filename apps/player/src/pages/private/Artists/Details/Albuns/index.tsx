@@ -1,16 +1,18 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Button, Skeleton } from 'antd';
+import { Button } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { useArtistDetails } from '../context';
 
-import Album from './Album';
-
+import AlbumCard from '@/components/shared/AlbumCard';
+import AlbumLoader from '@/components/shared/AlbumCard/Loader';
 import ArtistsService from '@/services/artists';
 
 const Albuns = () => {
   const { id } = useParams<{ id: string }>();
   const { artist } = useArtistDetails();
+  const { t } = useTranslation();
 
   const { data, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage, isEnabled } = useInfiniteQuery({
     enabled: !!artist,
@@ -28,13 +30,24 @@ const Albuns = () => {
 
   return (
     <section className='space-y-6'>
-      <h2 className='text-2xl font-medium text-white'>Álbuns populares</h2>
+      <h2 className='text-2xl font-medium text-white'>{t('artistDetails.albums.title')}</h2>
 
       <div className='grid grid-cols-1 md:grid-cols-4 gap-2.5 md:gap-4'>
-        {(isLoading || !isEnabled) &&
-          new Array(4).fill(0).map((_, index) => <Skeleton.Node key={index} active className='w-full h-25' />)}
+        {(isLoading || !isEnabled) && new Array(4).fill(0).map((_, index) => <AlbumLoader key={index} />)}
 
-        {!isLoading && albums.map(album => <Album key={album.id} data={album} />)}
+        {!isLoading &&
+          albums.map(album => (
+            <AlbumCard key={album.id}>
+              <AlbumCard.Image path={album.images[0].url} alt={album.name} />
+
+              <AlbumCard.Content>
+                <AlbumCard.Title>{album.name}</AlbumCard.Title>
+                <AlbumCard.Description>
+                  {album.total_tracks} {t('artistDetails.albums.tracks')}
+                </AlbumCard.Description>
+              </AlbumCard.Content>
+            </AlbumCard>
+          ))}
       </div>
 
       <div className='flex items-center justify-center'>
@@ -44,7 +57,7 @@ const Albuns = () => {
           loading={isFetchingNextPage}
           disabled={!hasNextPage}
         >
-          Ver mais
+          {t('artistDetails.albums.seeAll')}
         </Button>
       </div>
     </section>

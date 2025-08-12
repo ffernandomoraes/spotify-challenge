@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Button, Skeleton } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { useArtistDetails } from '../context';
@@ -13,6 +14,7 @@ import ArtistsService from '@/services/artists';
 const MAX_VISIBLE_TRACKS = 5;
 
 const Tracks = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const { artist } = useArtistDetails();
 
@@ -43,7 +45,7 @@ const Tracks = () => {
 
   return (
     <section>
-      <h2 className='text-2xl font-medium text-white mb-6'>Faixas populares</h2>
+      <h2 className='text-2xl font-medium text-white mb-6'>{t('artistDetails.tracks.title')}</h2>
 
       <div className='flex flex-col'>
         {(isLoading || !isEnabled) &&
@@ -56,7 +58,7 @@ const Tracks = () => {
 
       <div className='flex justify-center mt-4'>
         <Button className='w-full md:w-auto' disabled={isAllTracksVisible || isLoading} onClick={handleLoadMore}>
-          Ver todas as faixas
+          {t('artistDetails.tracks.seeAll')}
         </Button>
       </div>
     </section>

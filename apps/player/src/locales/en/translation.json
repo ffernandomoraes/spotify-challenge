@@ -28,5 +28,19 @@
       "description": "Discover today's hottest artists from around the world.",
       "seeAll": "See all"
     }
+  },
+
+  "artistDetails": {
+    "followers": "followers",
+    "popularity": "popularity",
+    "albums": {
+      "title": "Popular albums",
+      "tracks": "tracks",
+      "seeAll": "See more"
+    },
+    "tracks": {
+      "title": "Popular tracks",
+      "seeAll": "See all tracks"
+    }
   }
 }

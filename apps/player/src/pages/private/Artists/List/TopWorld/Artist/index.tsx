@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useTopWorld } from '../context';
 
+import ArtistCard from '@/components/shared/ArtistCard';
 import type { Artist as ArtistType } from '@/interfaces/artists';
 import { getDominantColor } from '@/utils/getDominantColor';
 
@@ -25,22 +26,14 @@ const Artist = ({ data }: { data: ArtistType }) => {
 
   return (
     <Link to={`/artist/${data.id}`}>
-      <div
-        className='flex flex-col group animate-fade-in'
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={resetBackgroundEffectColor}
-      >
-        <img
-          src={data?.images[1]?.url ?? ''}
-          alt={data.name}
-          className='w-full aspect-square opacity-100 md:opacity-90 group-hover:opacity-100 object-cover rounded-xl md:rounded-4xl outline-offset-5 outline-2 outline-transparent group-hover:outline-brand/70 transition-default'
-        />
+      <ArtistCard onMouseEnter={handleMouseEnter} onMouseLeave={resetBackgroundEffectColor}>
+        <ArtistCard.Image src={data?.images[1]?.url ?? ''} alt={data.name} />
 
-        <div className='mt-3 px-3'>
-          <h3 className='text-gray-400 font-medium group-hover:text-white transition-default truncate'>{data.name}</h3>
-          <p className='text-sm text-gray-400'>{t('artists.common.artist')}</p>
-        </div>
-      </div>
+        <ArtistCard.Content>
+          <ArtistCard.Title>{data.name}</ArtistCard.Title>
+          <ArtistCard.Description>{t('artists.common.artist')}</ArtistCard.Description>
+        </ArtistCard.Content>
+      </ArtistCard>
     </Link>
   );
 };

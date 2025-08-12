@@ -1,26 +1,23 @@
-import { Button, Skeleton, Tag } from 'antd';
+import { Button, Tag } from 'antd';
+import { useTranslation } from 'react-i18next';
+import { twMerge } from 'tailwind-merge';
 
 import { useArtistDetails } from '../context';
 
+import ArtistLoader from './Loader';
+
 import { formatNumber } from '@/formatters/number';
+import { getContrastColor } from '@/utils/colorContrast';
 
 const Artist = () => {
-  const { artist, isLoading } = useArtistDetails();
+  const { artist, isLoading, backgroundEffectColor } = useArtistDetails();
+  const { t } = useTranslation();
 
   if (isLoading) {
-    return (
-      <header className='w-full flex items-center gap-4'>
-        <div className='w-full flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12'>
-          <Skeleton.Node active className='w-full h-full aspect-square md:w-64 md:h-64 rounded-3xl' />
-
-          <div className='space-y-4 flex flex-col'>
-            <Skeleton.Node active className='w-full md:w-120 h-12' />
-            <Skeleton.Node active className='w-60 h-10' />
-          </div>
-        </div>
-      </header>
-    );
+    return <ArtistLoader />;
   }
+
+  const contrastBackgroundEffectColor = getContrastColor(backgroundEffectColor ?? '');
 
   return (
     <>
@@ -33,16 +30,46 @@ const Artist = () => {
           />
 
           <div className='space-y-4'>
-            <h1 className='text-4xl md:text-6xl font-bold text-white'>{artist?.name}</h1>
+            <h1
+              className={twMerge(
+                'text-4xl md:text-6xl font-bold text-white',
+                contrastBackgroundEffectColor === 'black' && 'text-black',
+                contrastBackgroundEffectColor === 'white' && 'text-white'
+              )}
+            >
+              {artist?.name}
+            </h1>
 
             <div className='flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-5'>
               {artist?.followers.total && (
-                <p className='text-gray-300 text-lg'>{formatNumber(artist.followers.total)} seguidores</p>
+                <p
+                  className={twMerge(
+                    'text-gray-300 text-lg',
+                    contrastBackgroundEffectColor === 'black' && 'text-black',
+                    contrastBackgroundEffectColor === 'white' && 'text-white'
+                  )}
+                >
+                  {formatNumber(artist.followers.total)} {t('artistDetails.followers')}
+                </p>
               )}
 
-              <div className='w-[1px] h-5 bg-gray-400 hidden md:block' />
+              <div
+                className={twMerge(
+                  'w-[1px] h-5 bg-gray-400 hidden md:block',
+                  contrastBackgroundEffectColor === 'black' && 'bg-black',
+                  contrastBackgroundEffectColor === 'white' && 'bg-white'
+                )}
+              />
 
-              <p className='text-gray-300 text-lg'>{artist?.popularity} de popularidade</p>
+              <p
+                className={twMerge(
+                  'text-gray-300 text-lg',
+                  contrastBackgroundEffectColor === 'black' && 'text-black',
+                  contrastBackgroundEffectColor === 'white' && 'text-white'
+                )}
+              >
+                {artist?.popularity} {t('artistDetails.popularity')}
+              </p>
             </div>
 
             <div className='flex-wrap hidden md:flex'>

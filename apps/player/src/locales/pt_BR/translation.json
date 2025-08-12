@@ -28,5 +28,19 @@
       "description": "Descubra hoje mesmo o que está em alta pelo mundo.",
       "seeAll": "Mostrar tudo"
     }
+  },
+
+  "artistDetails": {
+    "followers": "seguidores",
+    "popularity": "popularidade",
+    "albums": {
+      "title": "Álbuns populares",
+      "tracks": "faixas",
+      "seeAll": "Ver mais"
+    },
+    "tracks": {
+      "title": "Faixas populares",
+      "seeAll": "Ver todas as faixas"
+    }
   }
 }

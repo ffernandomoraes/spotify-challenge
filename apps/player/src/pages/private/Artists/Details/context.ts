@@ -5,6 +5,7 @@ import { Artist } from '@/interfaces/artists';
 type ArtistDetailsContextType = {
   isLoading: boolean;
   artist: Artist | undefined;
+  backgroundEffectColor: string | null;
 };
 
 const ArtistDetailsContext = createContext<ArtistDetailsContextType>({} as ArtistDetailsContextType);

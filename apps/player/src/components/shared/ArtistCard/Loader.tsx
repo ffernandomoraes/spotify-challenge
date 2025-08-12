@@ -1,6 +1,6 @@
 import { Skeleton } from 'antd';
 
-const Loader = () => {
+const ArtistCardLoader = () => {
   return (
     <div className='flex flex-col'>
       <Skeleton.Node active className='w-full h-full aspect-square rounded-4xl object-cover' />
@@ -13,4 +13,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default ArtistCardLoader;

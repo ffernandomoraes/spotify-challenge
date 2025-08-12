@@ -29,7 +29,7 @@ const Details = () => {
   }, [data]);
 
   return (
-    <ArtistDetailsProvider value={{ artist: data, isLoading }}>
+    <ArtistDetailsProvider value={{ artist: data, isLoading, backgroundEffectColor }}>
       <div className='p-6 md:p-12 md:pt-8'>
         <div
           style={{ ['--tw-detailsBackgroundEffectColor' as string]: backgroundEffectColor }}

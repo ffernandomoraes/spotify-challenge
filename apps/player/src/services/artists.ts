@@ -2,14 +2,8 @@ import ApiService from './api';
 
 import { Album } from '@/interfaces/albums';
 import { Artist } from '@/interfaces/artists';
+import { Pagination } from '@/interfaces/pagination';
 import { Track } from '@/interfaces/track';
-
-type GetAlbumsResponse = {
-  items: Album[];
-  limit: number;
-  offset: number;
-  total: number;
-};
 
 class ArtistsServiceClass {
   async listArtists() {
@@ -25,7 +19,7 @@ class ArtistsServiceClass {
   }
 
   async getAlbums(id: string, offset: number) {
-    return await ApiService.get<GetAlbumsResponse>(`/artists/${id}/albums?offset=${offset}`);
+    return await ApiService.get<{ items: Album[] } & Pagination>(`/artists/${id}/albums?offset=${offset}`);
   }
 }
 

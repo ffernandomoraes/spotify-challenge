@@ -28,5 +28,19 @@
       "description": "Découvrez les artistes les plus chauds du monde.",
       "seeAll": "Voir tous"
     }
+  },
+
+  "artistDetails": {
+    "followers": "followers",
+    "popularity": "popularité",
+    "albums": {
+      "title": "Albums populaires",
+      "tracks": "chansons",
+      "seeAll": "Voir plus"
+    },
+    "tracks": {
+      "title": "Chansons populaires",
+      "seeAll": "Voir toutes les chansons"
+    }
   }
 }

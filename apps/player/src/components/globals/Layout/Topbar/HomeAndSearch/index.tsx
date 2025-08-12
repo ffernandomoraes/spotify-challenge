@@ -1,4 +1,5 @@
 import { Button, Form, Input, Tooltip } from 'antd';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -10,12 +11,14 @@ type FormValues = {
 };
 
 const HomeAndSearch = () => {
-  const { t } = useTranslation();
-
   const [form] = Form.useForm();
 
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get('q');
 
   const handleGoHome = () => {
     form.resetFields();
@@ -28,6 +31,12 @@ const HomeAndSearch = () => {
   };
 
   const isHome = location.pathname === '/artists';
+
+  useEffect(() => {
+    if (query) {
+      form.setFieldsValue({ search: query });
+    }
+  }, [form, query]);
 
   return (
     <div className='flex items-center gap-2'>

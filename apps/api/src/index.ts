@@ -123,7 +123,7 @@ app.get('/search', async (req, res) => {
     q: query,
     type: 'artist,album',
     market: 'BR',
-    limit: '10'
+    limit: '6'
   });
 
   const response = await fetch(`${API_URL}/search?${params.toString()}`, {
@@ -134,6 +134,8 @@ app.get('/search', async (req, res) => {
   });
 
   const data = await response.json();
+
+  await sleep(DELAY);
 
   res.status(response.status).json(data);
 });
