@@ -40,7 +40,13 @@ const HomeAndSearch = () => {
   return (
     <div className='flex items-center gap-2'>
       <Tooltip title={t('topbar.buttonHome')}>
-        <Button disabled={isHome} shape='circle' className='group' onClick={handleGoHome}>
+        <Button
+          data-testid='topbar-home-button'
+          disabled={isHome}
+          shape='circle'
+          className='group'
+          onClick={handleGoHome}
+        >
           <HouseIcon className='w-5 h-5 fill-white/50 group-enabled:group-hover:fill-white transition-colors' />
         </Button>
       </Tooltip>
@@ -49,10 +55,12 @@ const HomeAndSearch = () => {
         <Form form={form} layout='inline' onFinish={onSubmit}>
           <Form.Item name='search'>
             <Input
+              data-testid='topbar-search-input'
               className='group w-124 hidden md:flex'
               placeholder={t('topbar.search.placeholder')}
               suffix={
                 <SearchIcon
+                  data-testid='topbar-search-button'
                   onClick={() => form.submit()}
                   className='cursor-pointer w-5 h-5 fill-white/50 group-hover:fill-white group-focus-within:fill-white transition-colors'
                 />
@@ -63,7 +71,7 @@ const HomeAndSearch = () => {
       </div>
 
       <div className='block md:hidden'>
-        <Button shape='circle' className='group'>
+        <Button shape='circle' className='group' data-testid='topbar-search-mobile-button'>
           <SearchIcon className='w-5 h-5 fill-white/50 group-enabled:group-hover:fill-white transition-colors' />
         </Button>
       </div>

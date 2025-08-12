@@ -25,7 +25,7 @@ const Artist = memo(({ data }: { data: ArtistType }) => {
   }, [data]);
 
   return (
-    <Link to={`/artist/${data.id}`}>
+    <Link to={`/artist/${data.id}`} data-testid={`artist-card-${data.id}`}>
       <ArtistCard onMouseEnter={handleMouseEnter} onMouseLeave={resetBackgroundEffectColor}>
         <ArtistCard.Image src={data?.images[1]?.url ?? ''} alt={data.name} />
 

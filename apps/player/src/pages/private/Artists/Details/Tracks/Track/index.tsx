@@ -24,6 +24,7 @@ const Track = memo(({ data, index }: TrackProps) => {
 
   return (
     <div
+      data-testid={`track-card-${data.id}`}
       onClick={handlePlay}
       className='hover:bg-elevated-base rounded-lg px-0 md:px-4 py-2.5 cursor-pointer transition-default w-full animate-fade-in'
     >

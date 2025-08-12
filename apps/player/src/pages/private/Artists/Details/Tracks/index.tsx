@@ -57,7 +57,12 @@ const Tracks = () => {
       </div>
 
       <div className='flex justify-center mt-4'>
-        <Button className='w-full md:w-auto' disabled={isAllTracksVisible || isLoading} onClick={handleLoadMore}>
+        <Button
+          data-testid='artist-tracks-see-all-button'
+          className='w-full md:w-auto'
+          disabled={isAllTracksVisible || isLoading}
+          onClick={handleLoadMore}
+        >
           {t('artistDetails.tracks.seeAll')}
         </Button>
       </div>

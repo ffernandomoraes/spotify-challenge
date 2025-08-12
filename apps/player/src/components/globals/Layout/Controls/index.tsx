@@ -30,6 +30,7 @@ const Controls = () => {
             <PrevIcon className='w-5 h-5 fill-white/50 cursor-pointer hover:fill-white transition-colors duration-300' />
 
             <Button
+              data-testid='controls-play-button'
               type='primary'
               shape='circle'
               size='small'

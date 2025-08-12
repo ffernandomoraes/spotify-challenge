@@ -74,7 +74,7 @@ const Profile = () => {
         ]
       }}
     >
-      <Button shape='circle' className='group bg-elevated-highlight w-12 h-12'>
+      <Button data-testid='topbar-profile-button' shape='circle' className='group bg-elevated-highlight w-12 h-12'>
         <Avatar size={34} className='bg-[#f573a0]'>
           <p className='text-base text-black font-semibold'>F</p>
         </Avatar>

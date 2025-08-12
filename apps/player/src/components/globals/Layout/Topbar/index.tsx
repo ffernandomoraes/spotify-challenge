@@ -31,7 +31,7 @@ const Topbar = () => {
         isScrolled ? 'h-20' : 'h-20 md:h-26'
       }`}
     >
-      <IconLogo className='w-10 h-10 fill-white' />
+      <IconLogo data-testid='topbar-logo' className='w-10 h-10 fill-white' />
       <HomeAndSearch />
       <Profile />
     </header>

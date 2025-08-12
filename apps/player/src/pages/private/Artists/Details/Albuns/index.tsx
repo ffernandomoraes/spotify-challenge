@@ -37,7 +37,7 @@ const Albuns = () => {
 
         {!isLoading &&
           albums.map(album => (
-            <AlbumCard key={album.id}>
+            <AlbumCard key={album.id} data-testid={`album-card-${album.id}`}>
               <AlbumCard.Image src={album.images[0].url} alt={album.name} />
 
               <AlbumCard.Content>
@@ -52,6 +52,7 @@ const Albuns = () => {
 
       <div className='flex items-center justify-center'>
         <Button
+          data-testid='artist-albums-see-all-button'
           className='w-full md:w-auto'
           onClick={() => fetchNextPage()}
           loading={isFetchingNextPage}
