@@ -1,4 +1,9 @@
 {
+  "error": {
+    "title": "Oops, quelque chose s'est mal passé.",
+    "description": "Veuillez réessayer plus tard."
+  },
+
   "form": {
     "requiredField": "Le champ est requis"
   },
@@ -19,11 +24,16 @@
   },
 
   "artists": {
+    "error": {
+      "title": "Impossible de charger les artistes",
+      "description": "Veuillez réessayer plus tard."
+    },
+
     "common": {
       "artist": "Artiste"
     },
 
-    "topWorld": {
+    "list": {
       "title": "Top world - Chauds",
       "description": "Découvrez les artistes les plus chauds du monde.",
       "seeAll": "Voir tous"
@@ -31,6 +41,12 @@
   },
 
   "artistDetails": {
+    "error": {
+      "title": "Impossible de charger les détails de l'artiste",
+      "description": "Veuillez réessayer plus tard."
+    },
+
+    "follow": "Suivre",
     "followers": "followers",
     "popularity": "popularité",
     "albums": {
@@ -41,6 +57,21 @@
     "tracks": {
       "title": "Chansons populaires",
       "seeAll": "Voir toutes les chansons"
+    }
+  },
+
+  "search": {
+    "error": {
+      "title": "Impossible de charger les résultats de la recherche",
+      "description": "Veuillez réessayer plus tard."
+    },
+
+    "artists": {
+      "title": "Artistes trouvés"
+    },
+
+    "albums": {
+      "title": "Albums trouvés"
     }
   }
 }

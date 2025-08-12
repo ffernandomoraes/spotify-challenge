@@ -31,7 +31,7 @@ const ListArtists = () => {
   });
 
   if (error) {
-    return <ErrorResponse title='Não foi possível carregar os artistas' description='Tente novamente mais tarde.' />;
+    return <ErrorResponse title={t('artists.error.title')} description={t('artists.error.description')} />;
   }
 
   return (
@@ -54,7 +54,7 @@ const ListArtists = () => {
                   contrastBackgroundEffectColor === 'white' && 'text-white'
                 )}
               >
-                {t('artists.topWorld.title')}
+                {t('artists.list.title')}
               </h1>
 
               <p
@@ -64,12 +64,19 @@ const ListArtists = () => {
                   contrastBackgroundEffectColor === 'white' && 'text-white'
                 )}
               >
-                {t('artists.topWorld.description')}
+                {t('artists.list.description')}
               </p>
             </div>
 
-            <Link to='/artists' className='text-gray-400 hover:text-white transition-default hidden md:block'>
-              {t('artists.topWorld.seeAll')}
+            <Link
+              to='/artists'
+              className={twMerge(
+                'text-gray-400 hover:text-white transition-default hidden md:block',
+                contrastBackgroundEffectColor === 'black' && 'text-black',
+                contrastBackgroundEffectColor === 'white' && 'text-white'
+              )}
+            >
+              {t('artists.list.seeAll')}
             </Link>
           </header>
 

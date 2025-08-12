@@ -26,7 +26,6 @@ const HomeAndSearch = () => {
   };
 
   const onSubmit = (values: FormValues) => {
-    console.log('submit', values);
     navigate(`/search?q=${values.search}`);
   };
 
@@ -53,7 +52,10 @@ const HomeAndSearch = () => {
               className='group w-124 hidden md:flex'
               placeholder={t('topbar.search.placeholder')}
               suffix={
-                <SearchIcon className='w-5 h-5 fill-white/50 group-hover:fill-white group-focus-within:fill-white transition-colors' />
+                <SearchIcon
+                  onClick={() => form.submit()}
+                  className='cursor-pointer w-5 h-5 fill-white/50 group-hover:fill-white group-focus-within:fill-white transition-colors'
+                />
               }
             />
           </Form.Item>

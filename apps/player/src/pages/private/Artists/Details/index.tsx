@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 
@@ -14,6 +15,7 @@ import { getDominantColor } from '@/utils/getDominantColor';
 
 const Details = () => {
   const { id } = useParams<{ id: string }>();
+  const { t } = useTranslation();
 
   const [backgroundEffectColor, setBackgroundEffectColor] = useState<string | null>(null);
 
@@ -30,12 +32,7 @@ const Details = () => {
   }, [data]);
 
   if (error) {
-    return (
-      <ErrorResponse
-        title='Não foi possível carregar os detalhes do artista'
-        description='Tente novamente mais tarde.'
-      />
-    );
+    return <ErrorResponse title={t('artists.error.title')} description={t('artists.error.description')} />;
   }
 
   return (

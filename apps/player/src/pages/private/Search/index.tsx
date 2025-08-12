@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 
 import AlbumCard from '@/components/shared/AlbumCard';
@@ -12,6 +13,7 @@ const CACHE_TIME = 10_000;
 
 const Search = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('q');
@@ -26,13 +28,13 @@ const Search = () => {
   const isLoadingOrFetching = isLoading || isFetching;
 
   if (error) {
-    return <ErrorResponse title='Não foi possível carregar os resultados' description='Tente novamente mais tarde.' />;
+    return <ErrorResponse title={t('search.error.title')} description={t('search.error.description')} />;
   }
 
   return (
     <div className='p-6 md:p-12 md:pt-8 space-y-12'>
       <section className='space-y-6'>
-        <h2 className='text-3xl font-bold text-white'>Artistas encontrados</h2>
+        <h2 className='text-3xl font-bold text-white'>{t('search.artists.title')}</h2>
 
         <div className='grid grid-cols-1 md:grid-cols-6 gap-2.5 md:gap-4'>
           {isLoadingOrFetching && new Array(6).fill(0).map((_, index) => <ArtistCardLoader key={index} />)}
@@ -53,7 +55,7 @@ const Search = () => {
       </section>
 
       <section className='space-y-6'>
-        <h2 className='text-3xl font-bold text-white'>Álbuns encontrados</h2>
+        <h2 className='text-3xl font-bold text-white'>{t('search.albums.title')}</h2>
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-2.5 md:gap-4'>
           {isLoadingOrFetching && new Array(6).fill(0).map((_, index) => <AlbumCardLoader key={index} />)}

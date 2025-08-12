@@ -1,4 +1,9 @@
 {
+  "error": {
+    "title": "Ops, algo deu errado.",
+    "description": "Tente novamente mais tarde."
+  },
+
   "form": {
     "requiredField": "O campo é obrigatório"
   },
@@ -19,11 +24,16 @@
   },
 
   "artists": {
+    "error": {
+      "title": "Não foi possível carregar os artistas",
+      "description": "Tente novamente mais tarde."
+    },
+
     "common": {
       "artist": "Artista"
     },
 
-    "topWorld": {
+    "list": {
       "title": "Em alta - Top mundo",
       "description": "Descubra hoje mesmo o que está em alta pelo mundo.",
       "seeAll": "Mostrar tudo"
@@ -31,6 +41,12 @@
   },
 
   "artistDetails": {
+    "error": {
+      "title": "Não foi possível carregar os detalhes do artista",
+      "description": "Tente novamente mais tarde."
+    },
+
+    "follow": "Seguir",
     "followers": "seguidores",
     "popularity": "popularidade",
     "albums": {
@@ -41,6 +57,21 @@
     "tracks": {
       "title": "Faixas populares",
       "seeAll": "Ver todas as faixas"
+    }
+  },
+
+  "search": {
+    "error": {
+      "title": "Não foi possível carregar os resultados",
+      "description": "Tente novamente mais tarde."
+    },
+
+    "artists": {
+      "title": "Artistas encontrados"
+    },
+
+    "albums": {
+      "title": "Álbuns encontrados"
     }
   }
 }

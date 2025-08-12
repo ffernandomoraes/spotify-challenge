@@ -2,6 +2,7 @@ import { Tooltip } from 'antd';
 
 import { formatDurationToMinutes } from '@/formatters/duration';
 import type { Track as TrackType } from '@/interfaces/track';
+import useControlsStore from '@/store/controls';
 
 type TrackProps = {
   data: TrackType;
@@ -9,8 +10,22 @@ type TrackProps = {
 };
 
 const Track = ({ data, index }: TrackProps) => {
+  const setTrack = useControlsStore(state => state.setTrack);
+
+  const handlePlay = () => {
+    setTrack({
+      name: data.name,
+      duration_ms: data.duration_ms,
+      image: data.album.images[0].url,
+      artist: data.artists.map(artist => artist.name).join(', ')
+    });
+  };
+
   return (
-    <div className='hover:bg-elevated-base rounded-lg px-0 md:px-4 py-2.5 cursor-pointer transition-default w-full animate-fade-in'>
+    <div
+      onClick={handlePlay}
+      className='hover:bg-elevated-base rounded-lg px-0 md:px-4 py-2.5 cursor-pointer transition-default w-full animate-fade-in'
+    >
       <div className='flex items-center justify-between gap-4'>
         <div className='flex items-center gap-4 overflow-hidden'>
           <span className='text-gray-400 text-sm min-w-3 font-light hidden md:block'>{index + 1}</span>

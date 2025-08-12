@@ -1,4 +1,9 @@
 {
+  "error": {
+    "title": "Oops, something went wrong.",
+    "description": "Please try again later."
+  },
+
   "form": {
     "requiredField": "The field is required"
   },
@@ -19,11 +24,16 @@
   },
 
   "artists": {
+    "error": {
+      "title": "Unable to load artists",
+      "description": "Please try again later."
+    },
+
     "common": {
       "artist": "Artist"
     },
 
-    "topWorld": {
+    "list": {
       "title": "Top world - Hot",
       "description": "Discover today's hottest artists from around the world.",
       "seeAll": "See all"
@@ -31,6 +41,12 @@
   },
 
   "artistDetails": {
+    "error": {
+      "title": "Unable to load artist details",
+      "description": "Please try again later."
+    },
+
+    "follow": "Follow",
     "followers": "followers",
     "popularity": "popularity",
     "albums": {
@@ -41,6 +57,21 @@
     "tracks": {
       "title": "Popular tracks",
       "seeAll": "See all tracks"
+    }
+  },
+
+  "search": {
+    "error": {
+      "title": "Unable to load search results",
+      "description": "Please try again later."
+    },
+
+    "artists": {
+      "title": "Artists found"
+    },
+
+    "albums": {
+      "title": "Albums found"
     }
   }
 }
