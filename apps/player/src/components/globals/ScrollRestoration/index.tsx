@@ -6,13 +6,13 @@ const ScrollRestoration = () => {
 
   const goToTop = useCallback(() => {
     try {
-      const main = document.querySelector('[role="main"]');
+      const html = document.querySelector('html');
 
-      if (!main) {
+      if (!html) {
         return;
       }
 
-      main.scrollTop = 0;
+      html.scrollTop = 0;
     } catch (error) {
       console.error('[ScrollRestoration] Error while trying to scroll to top:', error);
     }

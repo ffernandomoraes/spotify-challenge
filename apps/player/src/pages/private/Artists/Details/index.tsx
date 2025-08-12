@@ -22,7 +22,7 @@ const Details = () => {
   return (
     <ArtistDetailsProvider value={{ artist: data, isLoading }}>
       <div className='p-6 md:p-12 md:pt-8'>
-        <div className='bg-linear-to-b from-brand/50 to-background from-10% to-[650px] p-12 rounded-4xl space-y-16'>
+        <div className='bg-linear-to-b from-brand/50 to-background from-10% to-[650px] p-6 md:p-12 rounded-4xl space-y-16'>
           <Artist />
           <Tracks />
           <Albuns />

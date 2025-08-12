@@ -30,7 +30,7 @@ const Albuns = () => {
     <section className='space-y-6'>
       <h2 className='text-2xl font-medium text-white'>Álbuns populares</h2>
 
-      <div className='grid grid-cols-4 gap-4'>
+      <div className='grid grid-cols-1 md:grid-cols-4 gap-2.5 md:gap-4'>
         {(isLoading || !isEnabled) &&
           new Array(4).fill(0).map((_, index) => <Skeleton.Node key={index} active className='w-full h-25' />)}
 
@@ -38,7 +38,12 @@ const Albuns = () => {
       </div>
 
       <div className='flex items-center justify-center'>
-        <Button onClick={() => fetchNextPage()} loading={isFetchingNextPage} disabled={!hasNextPage}>
+        <Button
+          className='w-full md:w-auto'
+          onClick={() => fetchNextPage()}
+          loading={isFetchingNextPage}
+          disabled={!hasNextPage}
+        >
           Ver mais
         </Button>
       </div>

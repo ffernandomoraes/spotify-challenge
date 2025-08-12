@@ -12,7 +12,7 @@ const Artist = ({ data }: { data: ArtistType }) => {
         <img
           src={data?.images[1]?.url ?? ''}
           alt={data.name}
-          className='w-full aspect-square opacity-90 group-hover:opacity-100 object-cover rounded-4xl outline-offset-5 outline-2 outline-transparent group-hover:outline-brand/70 transition-default'
+          className='w-full aspect-square opacity-100 md:opacity-90 group-hover:opacity-100 object-cover rounded-xl md:rounded-4xl outline-offset-5 outline-2 outline-transparent group-hover:outline-brand/70 transition-default'
         />
 
         <div className='mt-3 px-3'>

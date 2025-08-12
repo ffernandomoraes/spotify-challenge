@@ -55,7 +55,7 @@ const Tracks = () => {
       </div>
 
       <div className='flex justify-center mt-4'>
-        <Button disabled={isAllTracksVisible || isLoading} onClick={handleLoadMore}>
+        <Button className='w-full md:w-auto' disabled={isAllTracksVisible || isLoading} onClick={handleLoadMore}>
           Ver todas as faixas
         </Button>
       </div>

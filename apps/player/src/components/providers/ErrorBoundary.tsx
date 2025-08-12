@@ -31,10 +31,12 @@ class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className='flex min-h-screen flex-col items-center justify-center gap-8'>
-          <div className='flex flex-col items-center justify-center gap-2'>
-            <h2 className='text-4xl font-bold'>Ops, algo deu errado.</h2>
-            <p className='text-lg text-gray-500'>Ocorreu um erro inesperado na aplicação, lamentamos o transtorno.</p>
+        <div className='w-full flex min-h-screen flex-col items-center justify-center gap-8'>
+          <div className='w-full flex flex-col items-center justify-center gap-2 px-4'>
+            <h2 className='text-4xl font-bold text-center'>Ops, algo deu errado.</h2>
+            <p className='text-lg text-gray-500 text-center'>
+              Ocorreu um erro inesperado na aplicação, lamentamos o transtorno.
+            </p>
           </div>
 
           <Button key='reload' onClick={this.handleReload}>

@@ -7,7 +7,7 @@ const Loader = () => {
 
       <div className='mt-3 px-3'>
         <Skeleton.Node active className='w-full h-4' />
-        <Skeleton.Node active className='h-3' />
+        <Skeleton.Node active className='h-3 max-w-full' />
       </div>
     </div>
   );
