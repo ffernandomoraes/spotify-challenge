@@ -5,6 +5,7 @@ import AlbumCard from '@/components/shared/AlbumCard';
 import AlbumCardLoader from '@/components/shared/AlbumCard/Loader';
 import ArtistCard from '@/components/shared/ArtistCard';
 import ArtistCardLoader from '@/components/shared/ArtistCard/Loader';
+import ErrorResponse from '@/components/shared/ErrorResponse';
 import { SearchService } from '@/services/search';
 
 const CACHE_TIME = 10_000;
@@ -15,7 +16,7 @@ const Search = () => {
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('q');
 
-  const { data, isLoading, isFetching } = useQuery({
+  const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ['search', query],
     gcTime: CACHE_TIME,
     staleTime: CACHE_TIME,
@@ -23,6 +24,10 @@ const Search = () => {
   });
 
   const isLoadingOrFetching = isLoading || isFetching;
+
+  if (error) {
+    return <ErrorResponse title='Não foi possível carregar os resultados' description='Tente novamente mais tarde.' />;
+  }
 
   return (
     <div className='p-6 md:p-12 md:pt-8 space-y-12'>

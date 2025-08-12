@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { useTopWorld } from '../context';
+import { useListArtists } from '../context';
 
 import ArtistCard from '@/components/shared/ArtistCard';
 import type { Artist as ArtistType } from '@/interfaces/artists';
@@ -10,7 +10,7 @@ import { getDominantColor } from '@/utils/getDominantColor';
 
 const Artist = ({ data }: { data: ArtistType }) => {
   const { t } = useTranslation();
-  const { setBackgroundEffectColor, resetBackgroundEffectColor } = useTopWorld();
+  const { setBackgroundEffectColor, resetBackgroundEffectColor } = useListArtists();
 
   const [color, setColor] = useState<string>('');
 

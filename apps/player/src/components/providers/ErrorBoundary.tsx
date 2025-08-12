@@ -1,6 +1,8 @@
 import { Button } from 'antd';
 import { Component, ErrorInfo, ReactNode } from 'react';
 
+import { isDevelopment } from '@/envs';
+
 interface Props {
   children: ReactNode;
 }
@@ -8,6 +10,7 @@ interface Props {
 interface State {
   hasError: boolean;
   error?: Error;
+  errorInfo?: ErrorInfo;
 }
 
 class ErrorBoundary extends Component<Props, State> {
@@ -22,6 +25,11 @@ class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('ErrorBoundary capturou um erro:', error, errorInfo);
+
+    this.setState({
+      error,
+      errorInfo
+    });
   }
 
   private handleReload = () => {
@@ -38,6 +46,17 @@ class ErrorBoundary extends Component<Props, State> {
               Ocorreu um erro inesperado na aplicação, lamentamos o transtorno.
             </p>
           </div>
+
+          {isDevelopment && (
+            <>
+              {this.state.errorInfo && (
+                <pre className='bg-elevated-highlight rounded-4xl p-4 text-xs text-red-300 overflow-auto mt-2'>
+                  {this.state.error?.message}
+                  {this.state.errorInfo.componentStack}
+                </pre>
+              )}
+            </>
+          )}
 
           <Button key='reload' onClick={this.handleReload}>
             Recarregar Página

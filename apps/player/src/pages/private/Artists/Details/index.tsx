@@ -8,6 +8,7 @@ import Artist from './Artist';
 import ArtistDetailsProvider from './context';
 import Tracks from './Tracks';
 
+import ErrorResponse from '@/components/shared/ErrorResponse';
 import ArtistsService from '@/services/artists';
 import { getDominantColor } from '@/utils/getDominantColor';
 
@@ -16,7 +17,7 @@ const Details = () => {
 
   const [backgroundEffectColor, setBackgroundEffectColor] = useState<string | null>(null);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['artists', 'details', id],
     queryFn: async () => {
       const response = await ArtistsService.getArtist(id ?? '');
@@ -27,6 +28,15 @@ const Details = () => {
   useEffect(() => {
     getDominantColor(data?.images[1]?.url ?? '').then(setBackgroundEffectColor);
   }, [data]);
+
+  if (error) {
+    return (
+      <ErrorResponse
+        title='Não foi possível carregar os detalhes do artista'
+        description='Tente novamente mais tarde.'
+      />
+    );
+  }
 
   return (
     <ArtistDetailsProvider value={{ artist: data, isLoading, backgroundEffectColor }}>
