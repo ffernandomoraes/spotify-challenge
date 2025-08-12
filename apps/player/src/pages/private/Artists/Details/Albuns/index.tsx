@@ -1,6 +1,8 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { Button } from 'antd';
+import { Button, Skeleton } from 'antd';
 import { useParams } from 'react-router-dom';
+
+import { useArtistDetails } from '../context';
 
 import Album from './Album';
 
@@ -8,8 +10,10 @@ import ArtistsService from '@/services/artists';
 
 const Albuns = () => {
   const { id } = useParams<{ id: string }>();
+  const { artist } = useArtistDetails();
 
-  const { data, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } = useInfiniteQuery({
+  const { data, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage, isEnabled } = useInfiniteQuery({
+    enabled: !!artist,
     queryKey: ['artists', 'albums', id],
     initialPageParam: 0,
     staleTime: 5000,
@@ -20,8 +24,6 @@ const Albuns = () => {
     }
   });
 
-  if (isLoading) return 'carregando...';
-
   const albums = data?.pages.flatMap(p => p.items) ?? [];
 
   return (
@@ -29,9 +31,10 @@ const Albuns = () => {
       <h2 className='text-2xl font-medium text-white'>Álbuns populares</h2>
 
       <div className='grid grid-cols-4 gap-4'>
-        {albums.map(album => (
-          <Album key={album.id} data={album} />
-        ))}
+        {(isLoading || !isEnabled) &&
+          new Array(4).fill(0).map((_, index) => <Skeleton.Node key={index} active className='w-full h-25' />)}
+
+        {!isLoading && albums.map(album => <Album key={album.id} data={album} />)}
       </div>
 
       <div className='flex items-center justify-center'>

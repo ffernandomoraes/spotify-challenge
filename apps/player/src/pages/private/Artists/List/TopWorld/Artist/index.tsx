@@ -8,7 +8,7 @@ const Artist = ({ data }: { data: ArtistType }) => {
 
   return (
     <Link to={`/artist/${data.id}`}>
-      <div className='flex flex-col group'>
+      <div className='flex flex-col group animate-fade-in'>
         <img
           src={data?.images[1]?.url ?? ''}
           alt={data.name}

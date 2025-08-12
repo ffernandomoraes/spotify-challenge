@@ -20,11 +20,11 @@ const TopWorld = () => {
   });
 
   return (
-    <div className='bg-linear-to-b from-brand/20 to-background p-8 md:p-12 rounded-4xl space-y-6'>
+    <div className='bg-linear-to-b from-brand/50 to-background from-10% to-60% p-8 md:p-12 rounded-4xl space-y-6'>
       <header className='flex items-end justify-between'>
         <div>
           <h1 className='text-4xl md:text-6xl font-bold mb-2 text-white'>{t('artists.topWorld.title')}</h1>
-          <p className='text-gray-400 text-lg'>{t('artists.topWorld.description')}</p>
+          <p className='text-gray-300 text-lg'>{t('artists.topWorld.description')}</p>
         </div>
 
         <Link to='/artists' className='text-gray-400 hover:text-white transition-default hidden md:block'>

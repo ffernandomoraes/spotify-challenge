@@ -1,52 +1,59 @@
-import { useQuery } from '@tanstack/react-query';
-import { Button, Tag } from 'antd';
-import { useParams } from 'react-router-dom';
+import { Button, Skeleton, Tag } from 'antd';
+
+import { useArtistDetails } from '../context';
 
 import { formatNumber } from '@/formatters/number';
-import ArtistsService from '@/services/artists';
 
 const Artist = () => {
-  const { id } = useParams<{ id: string }>();
-
-  const { data, isLoading } = useQuery({
-    queryKey: ['artists', 'details', id],
-    queryFn: () => ArtistsService.getArtist(id ?? '')
-  });
+  const { artist, isLoading } = useArtistDetails();
 
   if (isLoading) {
-    return 'carregando...';
+    return (
+      <header className='flex items-center gap-4 justify-between'>
+        <div className='flex items-center gap-12'>
+          <Skeleton.Node active className='w-64 h-64 rounded-3xl' />
+
+          <div className='space-y-4 flex flex-col'>
+            <Skeleton.Node active className='w-120 h-12' />
+            <Skeleton.Node active className='w-60 h-10' />
+          </div>
+        </div>
+      </header>
+    );
   }
 
   return (
-    <header className='flex items-center gap-4 justify-between'>
-      <div className='flex items-center gap-12'>
-        <img src={data?.images[0]?.url ?? ''} alt={data?.name} className='w-64 h-64 rounded-3xl object-cover' />
+    <>
+      <header className='flex items-center gap-4 justify-between animate-fade-in'>
+        <div className='flex items-center gap-12'>
+          <img src={artist?.images[0]?.url ?? ''} alt={artist?.name} className='w-64 h-64 rounded-3xl object-cover' />
 
-        <div className='space-y-4'>
-          <h1 className='text-6xl font-bold text-white'>{data?.name}</h1>
+          <div className='space-y-4'>
+            <h1 className='text-6xl font-bold text-white'>{artist?.name}</h1>
 
-          <div className='flex items-center gap-5'>
-            {data?.followers.total && (
-              <p className='text-gray-400 text-lg'>{formatNumber(data.followers.total)} seguidores</p>
-            )}
+            <div className='flex items-center gap-5'>
+              {artist?.followers.total && (
+                <p className='text-gray-300 text-lg'>{formatNumber(artist.followers.total)} seguidores</p>
+              )}
 
-            <div className='w-[1px] h-5 bg-gray-500' />
+              <div className='w-[1px] h-5 bg-gray-400' />
 
-            <p className='text-gray-400 text-lg'>{data?.popularity} de popularidade</p>
-          </div>
+              <p className='text-gray-300 text-lg'>{artist?.popularity} de popularidade</p>
+            </div>
 
-          <div className='flex flex-wrap'>
-            {data?.genres.map(genre => (
-              <Tag key={genre} className='px-2.5 py-0.5'>
-                {genre}
-              </Tag>
-            ))}
+            <div className='flex flex-wrap'>
+              {artist?.genres.map(genre => (
+                <Tag key={genre} className='px-2.5 py-0.5 text-white/70'>
+                  {genre}
+                </Tag>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      <Button color='primary'>Seguir</Button>
-    </header>
+        <Button color='primary'>Seguir</Button>
+      </header>
+    </>
   );
 };
 

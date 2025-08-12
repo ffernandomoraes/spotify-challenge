@@ -7,6 +7,7 @@ import { sleep } from './sleep';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const DELAY = 2000;
 
 app.use(helmet());
 app.use(cors());
@@ -36,7 +37,7 @@ app.post('/auth', async (req, res) => {
     })
   });
 
-  await sleep(3000);
+  await sleep(DELAY);
 
   const data = await response.json();
   res.status(response.status).json(data);
@@ -50,7 +51,7 @@ app.get('/artists', async (req, res) => {
     },
   });
 
-  await sleep(3000);
+  await sleep(DELAY);
 
   const data = await response.json();
 
@@ -58,18 +59,22 @@ app.get('/artists', async (req, res) => {
 });
 
 app.get('/artists/:id', async (req, res) => {
-  const response = await fetch(`${API_URL}/artists/${req.params.id}`, {
-    method: 'GET',
-    headers: {
-      Authorization: req.headers.authorization ?? ''
-    }
-  });
-
-  // await sleep(3000);
-
-  const data = await response.json();
-
-  res.status(response.status).json(data);
+  try {
+    const response = await fetch(`${API_URL}/artists/${req.params.id}`, {
+      method: 'GET',
+      headers: {
+        Authorization: req.headers.authorization ?? ''
+      }
+    });
+  
+    await sleep(DELAY);
+  
+    const data = await response.json();
+  
+    res.status(response.status).json(data); 
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.get('/artists/:id/top-tracks', async (req, res) => {
@@ -81,6 +86,8 @@ app.get('/artists/:id/top-tracks', async (req, res) => {
   });
 
   const data = await response.json();
+
+  await sleep(1000);
 
   res.status(response.status).json(data);
 });
@@ -104,7 +111,7 @@ app.get('/artists/:id/albums', async (req, res) => {
 
   const data = await response.json();
 
-  await sleep(3000);
+  await sleep(1000);
 
   res.status(response.status).json(data);
 });

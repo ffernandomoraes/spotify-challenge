@@ -10,7 +10,7 @@ type TrackProps = {
 
 const Track = ({ data, index }: TrackProps) => {
   return (
-    <div className='hover:bg-elevated-base rounded-lg px-4 py-2.5 cursor-pointer transition-default w-full'>
+    <div className='hover:bg-elevated-base rounded-lg px-4 py-2.5 cursor-pointer transition-default w-full animate-fade-in'>
       <div className='flex items-center justify-between gap-4'>
         <div className='flex items-center gap-4 overflow-hidden'>
           <span className='text-gray-400 text-sm min-w-3 font-light'>{index + 1}</span>
