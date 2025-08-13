@@ -1,4 +1,5 @@
 import cors from 'cors';
+import 'dotenv/config';
 import express from 'express';
 import helmet from 'helmet';
 import { Buffer } from 'node:buffer';
@@ -8,6 +9,8 @@ import { sleep } from './sleep';
 const app = express();
 const PORT = process.env.PORT || 3001;
 const DELAY = 2000;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 app.use(helmet());
 app.use(cors());
@@ -20,11 +23,14 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/auth', async (req, res) => {
-  const clientId = '71fe6b2b048846ed9f65fa1644408a43';
-  const clientSecret = '0cd12e4a469f46a7bcf119324cf2ed71';
+app.post('/auth', async (req, res) => {;
+  if (!CLIENT_ID || !CLIENT_SECRET) {
+    return res.status(500).json({ 
+      error: 'Credenciais do Spotify não configuradas' 
+    });
+  }
 
-  const buffer = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+  const buffer = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64');
 
   const response = await fetch(`https://accounts.spotify.com/api/token`, {
     method: 'POST',
