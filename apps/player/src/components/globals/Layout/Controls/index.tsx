@@ -13,13 +13,13 @@ const Controls = () => {
   const track = useControlsStore(state => state.track);
 
   return (
-    <footer className='bg-black backdrop-blur-sm fixed bottom-0 left-0 right-0 w-full h-22 flex flex-row items-center border-t border-white/10 px-12'>
+    <footer className='bg-black backdrop-blur-sm fixed bottom-0 left-0 right-0 w-full h-22 flex flex-row items-center border-t border-white/10 px-12' data-testid="player-controls">
       <div className='grid grid-cols-1 md:grid-cols-3 gap-2 w-full'>
         <div className='flex-row max-w-80 items-center gap-3 hidden md:flex'>
           <img src={track?.image} alt='Album Cover' className='w-14 object-cover rounded-md' />
 
           <div className='flex flex-col gap-1 overflow-hidden'>
-            <p className='text-white/70 text-base leading-none font-medium'>{track?.name}</p>
+            <p className='text-white/70 text-base leading-none font-medium' data-testid="current-track-name">{track?.name}</p>
             <p className='text-white/50 text-sm leading-none truncate'>{track?.artist}</p>
           </div>
         </div>

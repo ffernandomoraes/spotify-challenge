@@ -52,6 +52,7 @@ const Details = () => {
             !backgroundEffectColor && 'from-background-base',
             backgroundEffectColor && 'from-[var(--tw-detailsBackgroundEffectColor)]'
           )}
+          data-testid="artist-details"
         >
           <Artist />
           <Tracks />

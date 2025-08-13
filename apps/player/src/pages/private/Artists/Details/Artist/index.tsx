@@ -36,6 +36,7 @@ const Artist = () => {
                 contrastBackgroundEffectColor === 'black' && 'text-black',
                 contrastBackgroundEffectColor === 'white' && 'text-white'
               )}
+              data-testid="artist-name"
             >
               {artist?.name}
             </h1>
@@ -48,6 +49,7 @@ const Artist = () => {
                     contrastBackgroundEffectColor === 'black' && 'text-black',
                     contrastBackgroundEffectColor === 'white' && 'text-white'
                   )}
+                  data-testid="artist-followers"
                 >
                   {formatNumber(artist.followers.total)} {t('artistDetails.followers')}
                 </p>

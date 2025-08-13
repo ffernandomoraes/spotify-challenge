@@ -1,0 +1,52 @@
+{
+  "tracks": [
+    {
+      "id": "track1",
+      "name": "P do Pecado - Ao Vivo",
+      "duration_ms": 240000,
+      "popularity": 90,
+      "preview_url": "https://p.scdn.co/mp3-preview/track1",
+      "album": {
+        "id": "album1",
+        "name": "Menos É Mais Ao Vivo",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab67616d000048513eb9bb75e0b5472777ba0291",
+            "height": 640,
+            "width": 640
+          }
+        ]
+      },
+      "artists": [
+        {
+          "id": "1",
+          "name": "Grupo Menos É Mais"
+        }
+      ]
+    },
+    {
+      "id": "track2",
+      "name": "Coração Radiante - Ao Vivo",
+      "duration_ms": 220000,
+      "popularity": 85,
+      "preview_url": "https://p.scdn.co/mp3-preview/track2",
+      "album": {
+        "id": "album1",
+        "name": "Menos É Mais Ao Vivo",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab67616d000048513eb9bb75e0b5472777ba0291",
+            "height": 640,
+            "width": 640
+          }
+        ]
+      },
+      "artists": [
+        {
+          "id": "1",
+          "name": "Grupo Menos É Mais"
+        }
+      ]
+    }
+  ]
+}

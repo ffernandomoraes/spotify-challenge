@@ -1,0 +1,57 @@
+{
+  "artists": {
+    "items": [
+      {
+        "id": "1",
+        "name": "Grupo Menos É Mais",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb8c5b5a8c5b5a8c5b5a8c5b5a",
+            "height": 640,
+            "width": 640
+          }
+        ],
+        "followers": {
+          "total": 2500000
+        },
+        "genres": ["pagode", "samba"],
+        "popularity": 85
+      },
+      {
+        "id": "2",
+        "name": "Thiaguinho",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb9c9c9c9c9c9c9c9c9c9c9c9c",
+            "height": 640,
+            "width": 640
+          }
+        ],
+        "followers": {
+          "total": 1800000
+        },
+        "genres": ["pagode", "samba"],
+        "popularity": 80
+      },
+      {
+        "id": "3",
+        "name": "Péricles",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb7d7d7d7d7d7d7d7d7d7d7d7d",
+            "height": 640,
+            "width": 640
+          }
+        ],
+        "followers": {
+          "total": 1500000
+        },
+        "genres": ["pagode", "samba"],
+        "popularity": 78
+      }
+    ],
+    "total": 50,
+    "limit": 20,
+    "offset": 0
+  }
+}

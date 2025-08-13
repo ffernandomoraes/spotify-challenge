@@ -1,0 +1,19 @@
+{
+  "id": "1",
+  "name": "Grupo Menos É Mais",
+  "images": [
+    {
+      "url": "https://i.scdn.co/image/ab6761610000e5eb8c5b5a8c5b5a8c5b5a8c5b5a",
+      "height": 640,
+      "width": 640
+    }
+  ],
+  "followers": {
+    "total": 2500000
+  },
+  "genres": ["pagode", "samba"],
+  "popularity": 85,
+  "external_urls": {
+    "spotify": "https://open.spotify.com/artist/1"
+  }
+}

@@ -24,7 +24,7 @@ const Track = memo(({ data, index }: TrackProps) => {
 
   return (
     <div
-      data-testid={`track-card-${data.id}`}
+      data-testid="track-item"
       onClick={handlePlay}
       className='hover:bg-elevated-base rounded-lg px-0 md:px-4 py-2.5 cursor-pointer transition-default w-full animate-fade-in'
     >
@@ -36,7 +36,7 @@ const Track = memo(({ data, index }: TrackProps) => {
 
           <div className='flex flex-col overflow-hidden'>
             <div className='flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-2'>
-              <h3 className='text-white text-base font-medium line-clamp-1 md:line-clamp-none'>{data.name}</h3>
+              <h3 className='text-white text-base font-medium line-clamp-1 md:line-clamp-none' data-testid="play-button">{data.name}</h3>
 
               {data.explicit && (
                 <Tooltip title='Faixa explícita' placement='top'>

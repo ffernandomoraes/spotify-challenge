@@ -29,7 +29,7 @@ const Albuns = () => {
   const albums = data?.pages.flatMap(p => p.items) ?? [];
 
   return (
-    <section className='space-y-6'>
+    <section className='space-y-6' data-testid="artist-albums">
       <h2 className='text-2xl font-medium text-white'>{t('artistDetails.albums.title')}</h2>
 
       <div className='grid grid-cols-1 md:grid-cols-4 gap-2.5 md:gap-4'>
@@ -37,7 +37,7 @@ const Albuns = () => {
 
         {!isLoading &&
           albums.map(album => (
-            <AlbumCard key={album.id} data-testid={`album-card-${album.id}`}>
+            <AlbumCard key={album.id} data-testid="album-card">
               <AlbumCard.Image src={album.images[0].url} alt={album.name} />
 
               <AlbumCard.Content>

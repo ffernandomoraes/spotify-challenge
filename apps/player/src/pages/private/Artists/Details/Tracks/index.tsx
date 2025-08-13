@@ -44,7 +44,7 @@ const Tracks = () => {
   const isAllTracksVisible = visibleTracks.length === tracks.length;
 
   return (
-    <section>
+    <section data-testid="artist-tracks">
       <h2 className='text-2xl font-medium text-white mb-6'>{t('artistDetails.tracks.title')}</h2>
 
       <div className='flex flex-col'>

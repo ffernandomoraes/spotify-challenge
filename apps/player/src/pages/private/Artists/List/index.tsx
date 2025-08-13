@@ -31,7 +31,13 @@ const ListArtists = () => {
   });
 
   if (error) {
-    return <ErrorResponse title={t('artists.error.title')} description={t('artists.error.description')} />;
+    return (
+      <ErrorResponse
+        title={t('artists.error.title')}
+        description={t('artists.error.description')}
+        data-testid='error-message'
+      />
+    );
   }
 
   return (
@@ -80,7 +86,10 @@ const ListArtists = () => {
             </Link>
           </header>
 
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 md:gap-6'>
+          <div
+            className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 md:gap-6'
+            data-testid='artists-list'
+          >
             {isLoading && new Array(12).fill(0).map((_, index) => <ArtistCardLoader key={index} />)}
             {!isLoading && data?.artists.map(artist => <Artist key={artist.id} data={artist} />)}
           </div>

@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "id": "album1",
+      "name": "Menos É Mais Ao Vivo",
+      "images": [
+        {
+          "url": "https://i.scdn.co/image/ab67616d000048513eb9bb75e0b5472777ba0291",
+          "height": 640,
+          "width": 640
+        }
+      ],
+      "release_date": "2023-05-15",
+      "total_tracks": 15,
+      "album_type": "album"
+    },
+    {
+      "id": "album2",
+      "name": "Pagode do Menos É Mais",
+      "images": [
+        {
+          "url": "https://i.scdn.co/image/ab67616d000048512ab9bb75e0b5472777ba0291",
+          "height": 640,
+          "width": 640
+        }
+      ],
+      "release_date": "2022-10-20",
+      "total_tracks": 12,
+      "album_type": "album"
+    }
+  ],
+  "total": 15,
+  "limit": 20,
+  "offset": 0
+}

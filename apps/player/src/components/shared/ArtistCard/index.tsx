@@ -27,8 +27,8 @@ const Content = ({ children }: PropsWithChildren) => {
   return <div className='mt-3 px-3'>{children}</div>;
 };
 
-const Title = ({ children }: PropsWithChildren) => {
-  return <h3 className='text-gray-400 font-medium group-hover:text-white transition-default truncate'>{children}</h3>;
+const Title = ({ children, ...props }: PropsWithChildren<HTMLAttributes<HTMLHeadingElement>>) => {
+  return <h3 className='text-gray-400 font-medium group-hover:text-white transition-default truncate' {...props}>{children}</h3>;
 };
 
 const Description = ({ children }: PropsWithChildren) => {

@@ -41,7 +41,7 @@ const HomeAndSearch = () => {
     <div className='flex items-center gap-2'>
       <Tooltip title={t('topbar.buttonHome')}>
         <Button
-          data-testid='topbar-home-button'
+          data-testid={isHome ? 'topbar-home-button' : 'back-to-artists'}
           disabled={isHome}
           shape='circle'
           className='group'
