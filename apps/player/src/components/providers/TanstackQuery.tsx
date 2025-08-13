@@ -10,8 +10,8 @@ const TanstackQueryProvider = ({ children }: PropsWithChildren) => {
       queries: {
         refetchOnWindowFocus: false,
         retry: false,
-        gcTime: 10_000,
-        staleTime: 10_000
+        gcTime: 5 * 60 * 1000,
+        staleTime: 2 * 60 * 1000
       },
 
       mutations: {

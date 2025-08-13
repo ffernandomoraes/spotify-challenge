@@ -72,9 +72,9 @@ const Artist = () => {
               </p>
             </div>
 
-            <div className='flex-wrap hidden md:flex'>
+            <div className='flex-wrap hidden md:flex gap-2'>
               {artist?.genres.map(genre => (
-                <Tag key={genre} className='px-2.5 py-0.5 text-white/70'>
+                <Tag key={genre} className='px-2.5 py-0.5 text-white/70 m-0'>
                   {genre}
                 </Tag>
               ))}

@@ -8,7 +8,6 @@ import { useArtistDetails } from '../context';
 
 import Track from './Track';
 
-import type { Track as TrackType } from '@/interfaces/track';
 import ArtistsService from '@/services/artists';
 
 const MAX_VISIBLE_TRACKS = 5;
@@ -18,27 +17,22 @@ const Tracks = () => {
   const { id } = useParams<{ id: string }>();
   const { artist } = useArtistDetails();
 
-  const [tracks, setTracks] = useState<TrackType[]>([]);
-  const [visibleTracks, setVisibleTracks] = useState<TrackType[]>([]);
+  const [visibleTracksCount, setVisibleTracksCount] = useState(MAX_VISIBLE_TRACKS);
 
-  const { isLoading, isEnabled } = useQuery({
+  const { data, isLoading, isEnabled } = useQuery({
     enabled: !!artist,
     queryKey: ['artists', 'top-tracks', id],
     queryFn: async () => {
       const response = await ArtistsService.getTopTracks(id ?? '');
-
-      setTracks(() => {
-        const data = response.tracks;
-        setVisibleTracks(data.slice(0, MAX_VISIBLE_TRACKS));
-        return data;
-      });
-
       return response;
     }
   });
 
+  const tracks = data?.tracks || [];
+  const visibleTracks = tracks.slice(0, visibleTracksCount);
+
   const handleLoadMore = () => {
-    setVisibleTracks(tracks.slice(0, visibleTracks.length + MAX_VISIBLE_TRACKS));
+    setVisibleTracksCount(prev => prev + MAX_VISIBLE_TRACKS);
   };
 
   const isAllTracksVisible = visibleTracks.length === tracks.length;
