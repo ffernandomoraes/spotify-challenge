@@ -82,7 +82,7 @@ const Artist = () => {
           </div>
         </div>
 
-        <Button className='w-full md:w-auto' color='primary' data-testid='artist-follow-button'>
+        <Button className='w-full md:w-auto' data-testid='artist-follow-button'>
           {t('artistDetails.follow')}
         </Button>
       </header>

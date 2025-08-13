@@ -7,7 +7,7 @@ const antdTheme: ThemeConfig = {
   token: {
     fontFamily: 'var(--font-sans)',
     borderRadius: 24,
-    colorPrimary: 'var(--color-brand)',
+    colorPrimary: '#1DB954',
     colorBorder: 'var(--color-elevated-base)',
     controlHeight: 50,
     fontSize: 16
@@ -20,10 +20,12 @@ const antdTheme: ThemeConfig = {
     },
 
     Button: {
+      fontWeight: 500,
       defaultShadow: 'none',
       primaryShadow: 'none',
       paddingInline: 20,
       paddingInlineSM: 16,
+      primaryColor: '#000',
       defaultBg: 'var(--color-elevated-base)',
       defaultHoverBg: 'var(--color-elevated-highlight)',
       defaultHoverBorderColor: 'var(--color-elevated-highlight)',
